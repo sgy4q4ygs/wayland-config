@@ -1,5 +1,7 @@
 /*
 
+!/.xkb
+
 !/.config
 /.config/*
 
@@ -12,7 +14,7 @@
 !/.config/shell/wayland-config
 
 !/.config/sway
-!/.config/xkb
+!/.config/foot
 
 !/.local
 /.local/*
