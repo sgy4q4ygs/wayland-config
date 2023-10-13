@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+lnh () {
+	/bin/ln "-$3fv" "$1" "$2"
+}
+
+lnh "$CFG/xkb" "$HOME/.xkb" s

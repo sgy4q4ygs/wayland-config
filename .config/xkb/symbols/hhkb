@@ -1,0 +1,7 @@
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+	include "us"
+	name[Group1] = "hhkb";
+	key <TAB> { [ Super_L, NoSymbol ] };
+	key <CAPS> { [ Tab, ISO_Left_Tab ] };
+};
