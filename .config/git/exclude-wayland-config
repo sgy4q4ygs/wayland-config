@@ -22,3 +22,5 @@
 !/.local/bin
 /.local/bin/*
 !/.local/bin/wayland-config
+
+!/README.md
