@@ -1,0 +1,14 @@
+{
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.tabCompletion": "on",
+    "editor.minimap.enabled": false,
+    "workbench.startupEditor": "none",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "editor.cursorBlinking": "solid",
+    "editor.fontSize": 22,
+    "editor.fontFamily": "'iosevka term ss09'",
+    "terminal.integrated.fontSize": 22,
+    "editor.formatOnSave": true
+}
