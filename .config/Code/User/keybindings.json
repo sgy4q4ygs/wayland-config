@@ -1,21 +1,101 @@
 // These were taken from an export of the default bindings. The tab bindings were filtered out and changed to capslock to correspond with wayland-config/.xkb/symbols/hhkb
 [
-{ "key": "shift+capslock",             "command": "outdent",
-	"when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus" },
-{ "key": "capslock",                   "command": "tab", "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus" },
-{ "key": "capslock",                   "command": "editor.emmet.action.expandAbbreviation", "when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorReadonly && !editorTabMovesFocus" },
-{ "key": "capslock",                   "command": "insertSnippet", "when": "editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode" },
-{ "key": "capslock",                   "command": "jumpToNextSnippetPlaceholder", "when": "editorTextFocus && hasNextTabstop && inSnippetMode" },
-{ "key": "shift+capslock",             "command": "jumpToPrevSnippetPlaceholder", "when": "editorTextFocus && hasPrevTabstop && inSnippetMode" },
-{ "key": "shift+capslock",             "command": "acceptAlternativeSelectedSuggestion", "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus" },
-{ "key": "capslock",                   "command": "acceptSelectedSuggestion", "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus" },
-{ "key": "capslock",                   "command": "insertBestCompletion", "when": "atEndOfWord && textInputFocus && !hasOtherSuggestions && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'" },
-{ "key": "capslock",                   "command": "insertNextSuggestion", "when": "hasOtherSuggestions && textInputFocus && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'" },
-{ "key": "shift+capslock",             "command": "insertPrevSuggestion", "when": "hasOtherSuggestions && textInputFocus && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'" },
-{ "key": "capslock",                   "command": "editor.action.inlineSuggest.commit", "when": "inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible" },
-{ "key": "ctrl+shift+capslock",        "command": "workbench.action.quickOpenLeastRecentlyUsedEditorInGroup", "when": "!activeEditorGroupEmpty" },
-{ "key": "ctrl+capslock",              "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup", "when": "!activeEditorGroupEmpty" },
-{ "key": "capslock",                   "command": "workbench.action.terminal.acceptSelectedSuggestion", "when": "terminalFocus && terminalHasBeenCreated && terminalIsOpen && terminalSuggestWidgetVisible || terminalFocus && terminalIsOpen && terminalProcessSupported && terminalSuggestWidgetVisible" },
-{ "key": "ctrl+capslock",              "command": "workbench.action.quickOpenNavigateNextInEditorPicker", "when": "inEditorsPicker && inQuickOpen" },
-{ "key": "ctrl+shift+capslock",        "command": "workbench.action.quickOpenNavigatePreviousInEditorPicker", "when": "inEditorsPicker && inQuickOpen" }
+	{
+		"key": "shift+capslock",
+		"command": "outdent",
+		"when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus"
+	},
+	{
+		"key": "capslock",
+		"command": "tab",
+		"when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus"
+	},
+	{
+		"key": "capslock",
+		"command": "editor.emmet.action.expandAbbreviation",
+		"when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorReadonly && !editorTabMovesFocus"
+	},
+	{
+		"key": "capslock",
+		"command": "insertSnippet",
+		"when": "editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode"
+	},
+	{
+		"key": "capslock",
+		"command": "jumpToNextSnippetPlaceholder",
+		"when": "editorTextFocus && hasNextTabstop && inSnippetMode"
+	},
+	{
+		"key": "shift+capslock",
+		"command": "jumpToPrevSnippetPlaceholder",
+		"when": "editorTextFocus && hasPrevTabstop && inSnippetMode"
+	},
+	{
+		"key": "shift+capslock",
+		"command": "acceptAlternativeSelectedSuggestion",
+		"when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+	},
+	{
+		"key": "capslock",
+		"command": "acceptSelectedSuggestion",
+		"when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+	},
+	{
+		"key": "capslock",
+		"command": "insertBestCompletion",
+		"when": "atEndOfWord && textInputFocus && !hasOtherSuggestions && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+	},
+	{
+		"key": "capslock",
+		"command": "insertNextSuggestion",
+		"when": "hasOtherSuggestions && textInputFocus && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+	},
+	{
+		"key": "shift+capslock",
+		"command": "insertPrevSuggestion",
+		"when": "hasOtherSuggestions && textInputFocus && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+	},
+	{
+		"key": "capslock",
+		"command": "editor.action.inlineSuggest.commit",
+		"when": "inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+	},
+	{
+		"key": "ctrl+shift+capslock",
+		"command": "workbench.action.quickOpenLeastRecentlyUsedEditorInGroup",
+		"when": "!activeEditorGroupEmpty"
+	},
+	{
+		"key": "ctrl+capslock",
+		"command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+		"when": "!activeEditorGroupEmpty"
+	},
+	{
+		"key": "capslock",
+		"command": "workbench.action.terminal.acceptSelectedSuggestion",
+		"when": "terminalFocus && terminalHasBeenCreated && terminalIsOpen && terminalSuggestWidgetVisible || terminalFocus && terminalIsOpen && terminalProcessSupported && terminalSuggestWidgetVisible"
+	},
+	{
+		"key": "ctrl+capslock",
+		"command": "workbench.action.quickOpenNavigateNextInEditorPicker",
+		"when": "inEditorsPicker && inQuickOpen"
+	},
+	{
+		"key": "ctrl+shift+capslock",
+		"command": "workbench.action.quickOpenNavigatePreviousInEditorPicker",
+		"when": "inEditorsPicker && inQuickOpen"
+	},
+	{
+		"key": "ctrl+f",
+		"command": "-actions.find",
+		"when": "editorFocus || editorIsOpen"
+	},
+	{
+		"key": "ctrl+f",
+		"command": "workbench.action.quickOpen"
+	},
+	{
+		"key": "ctrl+p",
+		"command": "-workbench.action.quickOpen"
+	}
 ]

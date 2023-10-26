@@ -10,5 +10,10 @@
     "editor.fontSize": 22,
     "editor.fontFamily": "'iosevka term ss09'",
     "terminal.integrated.fontSize": 22,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.lineNumbers": "relative",
+    "editor.rulers": [
+        80,
+        120
+    ]
 }
