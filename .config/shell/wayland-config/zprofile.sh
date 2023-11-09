@@ -1,5 +1,7 @@
 autoload -U add-zsh-hook
 
+export PATH="$PATH:$HOME/.dotnet/tools"
+
 if [ -f "$CFG/shell/sway-config/cmdpatterns" ]; then
 	shellhistoryfilter_hook() {
 		shellhistoryfilter.py "$CFG/shell/sway-config/cmdpatterns"\

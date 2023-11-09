@@ -10,10 +10,21 @@
     "editor.fontSize": 22,
     "editor.fontFamily": "'iosevka term ss09'",
     "terminal.integrated.fontSize": 22,
-    "editor.formatOnSave": true,
     "editor.lineNumbers": "relative",
     "editor.rulers": [
         80,
         120
-    ]
+    ],
+    "dotnet.server.useOmnisharp": true,
+    "dotnet.preferCSharpExtension": true,
+    "extensions.ignoreRecommendations": true,
+    "omnisharp.enableLspDriver": true,
+    "omnisharp.enableDecompilationSupport": true,
+    "[csharp]": {
+        "editor.defaultFormatter": "ms-dotnettools.csharp"
+    },
+    "editor.formatOnSave": true,
+    "[razor]": {
+        "editor.formatOnSave": false
+    }
 }
