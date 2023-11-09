@@ -4,6 +4,11 @@
 
 This `README.md` is present in all `*-config` repos.
 
+## Todo
+
+- repair installation process (and guide)
+- streamline sensitive database synchronization
+
 ## Dependencies
 
 - Zsh
