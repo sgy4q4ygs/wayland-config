@@ -23,4 +23,6 @@
     "[csharp]": {
         "editor.defaultFormatter": "ms-dotnettools.csharp"
     },
+    "workbench.colorTheme": "GitHub Dark Default",
+    "settingsSync.ignoredExtensions": [],
 }
