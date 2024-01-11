@@ -1,0 +1,26 @@
+#!/usr/bin/env sh
+
+lnh () {
+	/bin/ln "-$3fv" "$1" "$2"
+}
+
+if [ ! -d "$HOME/.git-wayland-config" ]; then # wayland-config hasn't been installed
+
+	wayland_config=$HOME/wayland-config/.config
+	wayland_bin=$HOME/wayland-config/.local/bin
+	home_config=$HOME/.config
+	home_bin=$HOME/.local/bin
+
+	/bin/mv -v "$HOME/wayland-config/.git" "$HOME/.git-wayland-config"
+	/bin/mv -v "$wayland_config/git/exclude-wayland-config" "$home_config/git"
+
+	for dir in shell/wayland-config sway foot Code; do
+		if ! /bin/mkdir "$home_config/$dir"; then
+			echo "$home_config/$dir exists. Backup then remove this directory."
+			exit 1
+		fi
+		/bin/mv -v "$wayland_config/$dir/"* "$wayland_config/$dir"
+	done
+
+	/bin/mv -v "$wayland_bin/wayland-config" "$home_bin"
+fi

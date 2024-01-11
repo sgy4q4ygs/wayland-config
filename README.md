@@ -1,34 +1,38 @@
-# `*-config`
+# config
 
-`*-config` repos are a manifestation of a pattern for user configuration on Linux. There is one repo that contains files used by any instance; it is called `base-config`. Replace `git [commands]` with `git-<*-config repo name> [commands]` to use a `*-config` repo.
-
-This `README.md` is present in all `*-config` repos.
+`config` is a configuration management system for Linux users. `base-config` is the instance of `config` that contains files that are most likely to be useful in any Linux instance in the domain(s) a user works in&mdash;modify as desired.
 
 ## Todo
 
-- repair installation process (and guide)
-- streamline sensitive database synchronization
+- Add continuous testing with GitHub Actions
+- Make sure installation of base-config doesn't do unexpected things to the default desktop environment in Ubuntu
+- Streamline sensitive database synchronization
 
 ## Dependencies
 
 - Zsh
-- Neovim
+- Neovim (lazy.nvim requires Neovim >= 0.8.0)
 - Python
 
-## Installation of a `*-config` repo
+## Install a config
 
 Assign `config_repo=base-config` (or another repo like `wayland-config`) then do
 
 ```shell
 cd
 git clone --depth 1 https://github.com/dl0461/"$config_repo".git
-. "$config_repo"/.local/bin/"$config_repo"/init-any-config "$config_repo"
-mv "$config_repo"/.* . && rmdir "$config_repo"
+. "$config_repo/.local/bin/$config_repo/"init-any-config "$config_repo"
 ```
 
 , now logout.
 
-## Create a `*-config` repo
+## Use a config
+
+Replace `git [commands]` with `git-"$config_repo" [commands]` to use a config repo.
+
+## Create a config
+
+The name of a config is of the form `*-config`.
 
 ### Shell Configuration
 
@@ -38,31 +42,31 @@ mkdir ~/.config/shell/"$config_repo"
 
 This directory can have these files:
 
-- `init-more`
+#### `init-more`
 
 See `.config/shell/base-config/init-more` for an example `init-more`. This kind of script does tasks that should be done before a `zprofile` is sourced.
 
-- `cmdpatterns`
+#### `cmdpatterns`
 
-This file contains newline delimited `Lib/re` compatible regular expressions that denote what shell commands should be kept in `$XDG_STATE_HOME/zsh/histfile`.
+This file contains newline delimited Python `Lib/re` compatible regular expressions that denote what shell commands should be kept in `$XDG_STATE_HOME/zsh/histfile`.
 
-- `zprofile.sh`
+#### `zprofile.sh`
 
 This file can have `ssh-add` statements in it.
 
 If `cmdpatterns` is used, this file should have this block in it:
 
 ```shell
-if [ -f "$CFG/shell/<*-config repo name>/cmdpatterns" ]; then
+if [ -f "$CFG/shell/$config_repo/cmdpatterns" ]; then
     shellhistoryfilter_hook() {
-        shellhistoryfilter.py "$CFG/shell/<*-config repo name>/cmdpatterns"\
+        shellhistoryfilter.py "$CFG/shell/$config_repo/cmdpatterns"\
             &> "$XDG_STATE_HOME/zsh-shellhistoryfilter-hook-log"
     }
     add-zsh-hook zshexit shellhistoryfilter_hook
 fi
 ```
 
-- `zshrc.sh`
+#### `zshrc.sh`
 
 This file contains any tasks that should be executed in `.zshrc`.
 
@@ -75,9 +79,9 @@ mkdir ~/.local/bin/"$config_repo"
 This directory contains any scripts specfic to `$config_repo`. It will have at least one script:
 
 ```shell
-cat << EOL > ~/.local/bin/"$config_repo"/git-"$config_repo"
+cat << EOL > ~/.local/bin/"$config_repo/git-$config_repo"
 #!/usr/bin/env sh
-git --git-dir="$HOME"/"$config_repo" "$@"
+git --git-dir="$HOME/$config_repo" "$@"
 EOL
 ```
 
@@ -96,18 +100,18 @@ cat << EOL > ~/.config/git/exclude-"$config_repo"
 /.config/git/*
 !/.config/git/config
 !/.config/git/hooks
-!/.config/git/exclude-<*-config repo name>
+!/.config/git/exclude-"$config_repo"
 
 !/.config/shell
 /.config/shell/*
-!/.config/shell/<*-config repo name>
+!/.config/shell/"$config_repo"
 
 !/.local
 /.local/*
 
 !/.local/bin
 /.local/bin/*
-!/.local/bin/<*-config repo name>
+!/.local/bin/"$config_repo"
 
 !/README.md
 EOL
