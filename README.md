@@ -1,30 +1,58 @@
 # config
 
-`config` is a configuration management system for Linux users. `base-config` is the instance of `config` that contains files that are most likely to be useful in any Linux instance in the domain(s) a user works in&mdash;modify as desired.
+`config` is a configuration management system for Linux users. Instructions for how to realize this system are provided below. `base-config` is the instance of `config` that contains files that are most likely to be useful in any Linux instance in the domain(s) a user works in&mdash;modify as desired.
 
 ## Todo
 
-- Add continuous testing with GitHub Actions
-- Make sure installation of base-config doesn't do unexpected things to the default desktop environment in Ubuntu
+### Generic
+- Add Ansible Playbooks for instances of `config`
+- Continuous testing with GitHub Actions
+    - Add tests for common platforms
+        - Make sure installation of base-config doesn't do unexpected things to the default desktop environment in Ubuntu
+
+### Personal
 - Streamline sensitive database synchronization
 
 ## Dependencies
+
+### base-config
 
 - Zsh
 - Neovim (lazy.nvim requires Neovim >= 0.8.0)
 - Python
 
+### wayland-config
+
+- Sway
+- Foot (installed with Sway)
+- VS Code
+
+&mdash;to be embedded with a tool such as Ansible, along with others&mdash;such as GTK themes and a web browser.
+
 ## Install a config
 
-Assign `config_repo=base-config` (or another repo like `wayland-config`) then do
+`.local/bin/base-config/init-any-config` and all `init-more` scripts are supposed to idempotent.
+
+Assign `config_repo` to something like `base-config` or `wayland-config` then do
 
 ```shell
 cd
 git clone --depth 1 https://github.com/dl0461/"$config_repo".git
+```
+
+If `config_repo` is not `base-config`
+
+```shell
+init-any-config "$config_repo"
+```
+
+else
+
+```shell
 . "$config_repo/.local/bin/$config_repo/"init-any-config "$config_repo"
 ```
 
-, now logout.
+Now verify all dependencies are installed then logout.
 
 ## Use a config
 

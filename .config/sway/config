@@ -12,6 +12,7 @@ set $gnome-schema org.gnome.desktop.interface
 
 seat seat0 hide_cursor 500
 
+# add script with conditional to determine specific mapping for specific keyboard
 input "type:keyboard" {
 	xkb_layout "hhkb"
 }
