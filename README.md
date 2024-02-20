@@ -25,6 +25,8 @@
 
 - Sway
 - Foot (installed with Sway)
+- brightnessctl (if using laptop)
+- wl-clipboard (xclip "equivalent")
 - VS Code
 
 &mdash;to be embedded with a tool such as Ansible, along with others&mdash;such as GTK themes and a web browser.
