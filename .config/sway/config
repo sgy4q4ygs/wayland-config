@@ -24,14 +24,30 @@ output "DP-2" resolution 1440x2560 position 1440,0 transform 270
 
 output * bg #000000 solid_color
 
-# daniel ALL=(ALL) NOPASSWD: /usr/bin/brightnessctl
-bindsym XF86MonBrightnessDown exec sudo brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec sudo brightnessctl set 5%+
+# this binding doesn't work - could use another
+#bindsym XF86PowerOff exec systemctl suspend
+# - better yet
+# /etc/systemd/logind.conf
+# ...
+# HandlePowerKey=suspend
+# HandleSuspendKey=suspend
+# HandleLidSwitch=suspend
+# HandleLidSwitchExternalPower=suspend
+# ...
 
-bindsym $mod+Shift+b exec firefox
-bindsym $mod+Shift+p exec keepassxc
+# daniel ALL=(ALL) NOPASSWD: /usr/bin/brightnessctl
+bindsym --locked XF86MonBrightnessDown exec sudo brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec sudo brightnessctl set 5%+
+
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
+
+bindsym $mod+Shift+a exec pavucontrol
+
+# on some systems/keyboards/... etc neither of these works
+#bindsym $mod+Shift+c reload
+#bindsym $mod+Shift+c exec sway reload
 bindsym $mod+Shift+q kill
-bindsym $mod+Shift+c reload
 
 bindsym $mod+Return exec $term
 bindsym $mod+d exec $menu
