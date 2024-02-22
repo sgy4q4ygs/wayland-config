@@ -25,4 +25,7 @@
     },
     "workbench.colorTheme": "GitHub Dark Default",
     "settingsSync.ignoredExtensions": [],
+    "csharp.suppressBuildAssetsNotification": true,
+    "csharp.suppressDotnetRestoreNotification": true,
+    "omnisharp.disableMSBuildDiagnosticWarning": true
 }
