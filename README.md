@@ -5,12 +5,14 @@
 ## Todo
 
 ### Generic
+
 - Add Ansible Playbooks for instances of `config`
 - Continuous testing with GitHub Actions
     - Add tests for common platforms
         - Make sure installation of base-config doesn't do unexpected things to the default desktop environment in Ubuntu
 
 ### Personal
+
 - Streamline sensitive database synchronization
 
 ## Dependencies
@@ -19,7 +21,15 @@
 
 - Zsh
 - Neovim (lazy.nvim requires Neovim >= 0.8.0)
+
+If `.local/bin/base-config/shellhistoryfilter.py` is used,
+
 - Python
+
+If `.local/bin/base-config/connect-to-wireless-network` is used,
+
+- `wpa_supplicant`
+- NetworkManager
 
 ### wayland-config
 
