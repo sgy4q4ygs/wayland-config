@@ -1,31 +1,33 @@
 {
-    "security.workspace.trust.untrustedFiles": "open",
     "editor.tabCompletion": "on",
     "editor.minimap.enabled": false,
-    "workbench.startupEditor": "none",
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
-    },
     "editor.cursorBlinking": "solid",
     "editor.fontSize": 22,
     "editor.fontFamily": "'iosevka term ss09'",
-    "terminal.integrated.fontSize": 22,
     "editor.lineNumbers": "relative",
     "editor.rulers": [
         80,
         120
     ],
-    "dotnet.server.useOmnisharp": true,
-    "dotnet.preferCSharpExtension": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "GitHub Dark Default",
     "extensions.ignoreRecommendations": true,
-    "omnisharp.enableLspDriver": true,
-    "omnisharp.enableDecompilationSupport": true,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "terminal.integrated.fontSize": 22,
+    "settingsSync.ignoredExtensions": [],
+
     "[csharp]": {
         "editor.defaultFormatter": "ms-dotnettools.csharp"
     },
-    "workbench.colorTheme": "GitHub Dark Default",
-    "settingsSync.ignoredExtensions": [],
-    "csharp.suppressBuildAssetsNotification": true,
-    "csharp.suppressDotnetRestoreNotification": true,
-    "omnisharp.disableMSBuildDiagnosticWarning": true
+    "csharp.suppressBuildAssetsNotification": false,
+    "csharp.suppressDotnetRestoreNotification": false,
+    "dotnet.preferCSharpExtension": true,
+    "dotnet.server.useOmnisharp": true,
+    "omnisharp.enableLspDriver": true,
+    "omnisharp.enableDecompilationSupport": true,
+    "omnisharp.disableMSBuildDiagnosticWarning": false
+
 }
