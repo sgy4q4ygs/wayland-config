@@ -4,16 +4,8 @@
 
 ## Todo
 
-### Generic
-
-- Add Ansible Playbooks for instances of `config`
-- Continuous testing with GitHub Actions
-    - Add tests for common platforms
-        - Make sure installation of base-config doesn't do unexpected things to the default desktop environment in Ubuntu
-
-### Personal
-
-- Streamline sensitive database synchronization
+- Improve hydration maintainability with `rsync`
+- Run `.config/shell/*-config/dependencies` in `init-any-config`
 
 ## Dependencies
 

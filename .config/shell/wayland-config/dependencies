@@ -1,0 +1,32 @@
+#!/usr/bin/env sh
+
+CALLING_DIR=$(pwd)
+
+DISTRO_NAME=$(awk -F= '/^NAME/{print $2}' /etc/os-release | tr -d '"')
+
+install_package() {
+    local package=$1
+    case "$DISTRO_NAME" in
+        "Debian GNU/Linux"|"Ubuntu"|"Pop\!_OS")
+            sudo apt-get install -y "$package"
+            ;;
+        *)
+            echo "Package manager not supported"
+            return 1
+            ;;
+    esac
+}
+
+if ! which sway > /dev/null 2>&1; then
+#
+# Here's the begining of what is required to install it manually...
+#
+# cd /tmp/
+# git clone https://github.com/swaywm/sway.git
+# LATEST_TAG=$(git tag | grep '^[0-9]*[0-9]\.[0-9][0-9]*\.*[0-9]*$' | sort -V | tail -n 1)
+# git checkout "tags/$LATEST_TAG"
+#
+    install_package sway
+fi
+
+cd "$CALLING_DIR" || exit 1
