@@ -27,4 +27,8 @@ if [ ! -d "$HOME/.git-wayland-config" ]; then
     "$HOME/wayland-config/.config/shell/wayland-config/dependencies"
 
     hydrate_home_with_waylandconfig
+
+    if systemctl is-active --quiet gdm; then
+        sudo systemctl disable gdm
+    fi
 fi
