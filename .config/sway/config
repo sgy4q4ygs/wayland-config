@@ -5,7 +5,6 @@ set $down j
 set $up k
 set $right l
 
-set $term foot
 set $menu bemenu-run
 set $gnome-schema org.gnome.desktop.interface
 
@@ -50,7 +49,8 @@ bindsym --locked XF86MonBrightnessUp exec /usr/bin/brightnessctl set 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 
-bindsym $mod+Return exec $term
+bindsym $mod+Return exec foot
+bindsym $mod+Shift+t exec foot -e tmux attach || foot -e tmux
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 # on some systems/keyboards/... etc neither of these works
