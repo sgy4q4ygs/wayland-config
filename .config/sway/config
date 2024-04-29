@@ -87,7 +87,7 @@ client.focused_inactive #000000 #000000 #888888 #000000 #000000
 client.focused_tab_title #000000 #000000 #888888 #000000 #000000
 bar {
     position bottom
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+    status_command $XDG_CONFIG_HOME/sway/status.sh
     colors {
         active_workspace #555555 #000000 #888888
         inactive_workspace #555555 #000000 #888888

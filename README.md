@@ -5,7 +5,6 @@
 ## TODO (`wayland-config`)
 
 - GTK/QT universal theme
-- to `sway-bar`, add name of network currently connected to (wifi or not and "not connected" if not not connected), signal strength (if wifi), percentage of battery left (if laptop), current brightness level (laptop), and current main output device sound percentage
 
 ## Dependencies
 
@@ -26,6 +25,7 @@ If `.local/bin/base-config/connect-to-wireless-network` is used,
 ### wayland-config
 
 - Iosevka Term SS09 font
+- `acpi`
 - wl-clipboard (xclip "equivalent")
 - Sway
 - Foot (installed with Sway if done via package manager)
