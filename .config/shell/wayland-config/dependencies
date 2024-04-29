@@ -17,6 +17,12 @@ install_package() {
     esac
 }
 
+echo "Checking dependencies for wayland-config..."
+
+if ! which wl-copy > /dev/null 2>&1; then
+    install_package wl-clipboard
+fi
+
 if ! which sway > /dev/null 2>&1; then
 #
 # Here's the begining of what is required to install it manually...
@@ -27,6 +33,10 @@ if ! which sway > /dev/null 2>&1; then
 # git checkout "tags/$LATEST_TAG"
 #
     install_package sway
+fi
+
+if ! which brightnessctl > /dev/null 2>&1; then
+    install_package brightnessctl
 fi
 
 cd "$CALLING_DIR" || exit 1

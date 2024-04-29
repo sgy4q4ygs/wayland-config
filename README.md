@@ -2,10 +2,9 @@
 
 `config` is a configuration management system for Linux users. Instructions for how to realize this system are provided below. `base-config` is the instance of `config` that contains files that are most likely to be useful in any Linux instance in the domain(s) a user works in&mdash;modify as desired.
 
-## Todo
+## TODO
 
-- Improve hydration maintainability with `rsync`
-- Run `.config/shell/*-config/dependencies` in `init-any-config`
+- GTK/QT universal theme
 
 ## Dependencies
 
@@ -25,13 +24,11 @@ If `.local/bin/base-config/connect-to-wireless-network` is used,
 
 ### wayland-config
 
-- Sway
-- Foot (installed with Sway)
-- brightnessctl (if using laptop)
 - wl-clipboard (xclip "equivalent")
-- VS Code
-
-&mdash;to be embedded with a tool such as Ansible, along with others&mdash;such as GTK themes and a web browser.
+- Sway
+- Foot (installed with Sway if done via package manager)
+- A few others including a `dmenu` made compatible with wayland (sway via package manager alleviates this concern)
+- brightnessctl (if using laptop)
 
 ## Install a config
 

@@ -2,27 +2,29 @@
 
 hydrate_home_with_waylandconfig() {
 
-	wayland_config=$HOME/wayland-config/.config
-	wayland_bin=$HOME/wayland-config/.local/bin
-	home_config=$HOME/.config
-	home_bin=$HOME/.local/bin
+    wayland_config="$HOME/wayland-config/.config"
+    wayland_bin="$HOME/wayland-config/.local/bin"
+    home_config="$HOME/.config"
+    home_bin="$HOME/.local/bin"
 
-	/bin/mv -v "$HOME/wayland-config/.git" "$HOME/.git-wayland-config"
-	/bin/mv -v "$wayland_config/git/exclude-wayland-config" "$home_config/git"
+    /bin/mv -v "$HOME/wayland-config/.git" "$HOME/.git-wayland-config"
 
-	for dir in sway foot Code; do
-		if ! /bin/mkdir "$home_config/$dir"; then
-			echo "$home_config/$dir exists. Backing up..."
-            /bin/mv -v "$home_config/$dir" "$HOME/$home_config/$dir-BACKUP"
-		fi
-		/bin/mv -v "$wayland_config/$dir/"* "$home_config/$dir"
-	done
+    /bin/mv -v "$wayland_config/git/exclude-wayland-config" "$home_config/git"
 
-	/bin/mv -v "$wayland_bin/wayland-config" "$home_bin"
+    for dir in shell sway foot Code; do
+        rsync -r --remove-source-files "$wayland_config/$dir" "$home_config"
+        echo "$home_config/$dir <- $wayland_config/$dir"
+    done
+
+    rsync -r --remove-source-files "$wayland_bin/wayland-config" "$home_bin"
+    echo "$home_bin/wayland-config <- $wayland_bin/wayland-config"
 
     /bin/mv -v "$HOME/wayland-config/.xkb" "$HOME"
 }
 
 if [ ! -d "$HOME/.git-wayland-config" ]; then
+
+    "$HOME/wayland-config/.config/shell/wayland-config/dependencies"
+
     hydrate_home_with_waylandconfig
 fi
