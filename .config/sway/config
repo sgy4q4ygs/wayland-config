@@ -6,7 +6,7 @@ set $up k
 set $right l
 
 set $term foot
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu bemenu-run
 set $gnome-schema org.gnome.desktop.interface
 
 seat seat0 hide_cursor 500

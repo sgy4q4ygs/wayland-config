@@ -35,6 +35,10 @@ if ! which sway > /dev/null 2>&1; then
     install_package sway
 fi
 
+if ! which bemenu > /dev/null 2>&1; then
+    install_package bemenu
+fi
+
 if ! which brightnessctl > /dev/null 2>&1; then
     install_package brightnessctl
 fi

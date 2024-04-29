@@ -27,7 +27,7 @@ If `.local/bin/base-config/connect-to-wireless-network` is used,
 - wl-clipboard (xclip "equivalent")
 - Sway
 - Foot (installed with Sway if done via package manager)
-- A few others including a `dmenu` made compatible with wayland (sway via package manager alleviates this concern)
+- `bemenu`
 - brightnessctl (if using laptop)
 
 ## Install a config
