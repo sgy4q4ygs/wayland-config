@@ -33,10 +33,20 @@ output "DP-2" resolution 1440x2560 position 1440,0 transform 270
 # HandleLidSwitch=suspend
 # HandleLidSwitchExternalPower=suspend
 # ...
+#
+# this doesn't work every system
+#
 # /etc/sudoers
+# ...
 # daniel ALL=(ALL) NOPASSWD: /usr/bin/brightnessctl
-bindsym --locked XF86MonBrightnessDown exec sudo brightnessctl set 5%-
-bindsym --locked XF86MonBrightnessUp exec sudo brightnessctl set 5%+
+# ...
+#
+# instead do
+#
+# sudo chmod u+s /usr/bin/brightnessctl
+#
+bindsym --locked XF86MonBrightnessDown exec /usr/bin/brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec /usr/bin/brightnessctl set 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 

@@ -43,4 +43,8 @@ if ! which brightnessctl > /dev/null 2>&1; then
     install_package brightnessctl
 fi
 
+if ! which pavucontrol > /dev/null 2>&1; then
+    install_package pavucontrol
+fi
+
 cd "$CALLING_DIR" || exit 1

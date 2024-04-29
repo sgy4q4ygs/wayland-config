@@ -28,7 +28,8 @@ If `.local/bin/base-config/connect-to-wireless-network` is used,
 - Sway
 - Foot (installed with Sway if done via package manager)
 - `bemenu`
-- brightnessctl (if using laptop)
+- `brightnessctl` (if using laptop)
+- `pavucontrol`
 
 ## Install a config
 
