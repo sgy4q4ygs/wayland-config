@@ -8,6 +8,7 @@ install_package() {
     local package=$1
     case "$DISTRO_NAME" in
         "Debian GNU/Linux"|"Ubuntu"|"Pop\!_OS")
+            echo "Installing package $package..."
             sudo apt-get install -y "$package"
             ;;
         *)
@@ -18,6 +19,15 @@ install_package() {
 }
 
 echo "Checking dependencies for wayland-config..."
+
+if ! fc-list | grep -iq "Iosevka Term SS09"; then
+    name=PkgTTC-SGr-IosevkaTermSS09-29.2.1
+    wget -P /tmp/ "https://github.com/be5invis/Iosevka/releases/download/v29.2.1/$name.zip"
+    sudo unzip -d "/tmp/$name/" "/tmp/$name.zip"
+    sudo mv "/tmp/$name/SGr-IosevkaTermSS09-Regular.ttc" /usr/share/fonts/
+    sudo fc-cache -f -v
+    sudo rm -rf "/tmp/$name/"
+fi
 
 if ! which wl-copy > /dev/null 2>&1; then
     install_package wl-clipboard

@@ -5,7 +5,6 @@
 ## TODO (`wayland-config`)
 
 - GTK/QT universal theme
-- in `$CFG/shell/wayland-config/dependencies`, check or install `https://github.com/be5invis/Iosevka/releases/download/v29.2.1/PkgTTC-SGr-IosevkaTermSS09-29.2.1.zip`
 - to `sway-bar`, add name of network currently connected to (wifi or not and "not connected" if not not connected), signal strength (if wifi), percentage of battery left (if laptop), current brightness level (laptop), and current main output device sound percentage
 
 ## Dependencies
@@ -26,6 +25,7 @@ If `.local/bin/base-config/connect-to-wireless-network` is used,
 
 ### wayland-config
 
+- Iosevka Term SS09 font
 - wl-clipboard (xclip "equivalent")
 - Sway
 - Foot (installed with Sway if done via package manager)
