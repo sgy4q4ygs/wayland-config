@@ -3,6 +3,7 @@
 CALLING_DIR=$(pwd)
 
 DISTRO_NAME=$(awk -F= '/^NAME/{print $2}' /etc/os-release | tr -d '"')
+APT_DISTROS='Debian GNU/Linux|Ubuntu|"Pop\!_OS'
 
 install_package() {
     local package=$1
@@ -59,6 +60,18 @@ fi
 
 if ! which pavucontrol > /dev/null 2>&1; then
     install_package pavucontrol
+fi
+
+if ! which grim > /dev/null 2>&1; then
+    install_package grim
+fi
+
+if ! which obs > /dev/null 2>&1; then
+    if echo "$APT_DISTROS" | tr ' ' '\n' | grep -q "$DISTRO_NAME"; then
+        echo "Adding repo for obs-studio..."
+        sudo add-apt-repository ppa:obsproject/obs-studio
+    fi
+    install_package obs-studio
 fi
 
 cd "$CALLING_DIR" || exit 1

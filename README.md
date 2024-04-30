@@ -6,33 +6,6 @@
 
 - GTK/QT universal theme
 
-## Dependencies
-
-### base-config
-
-- Zsh
-- Neovim (lazy.nvim requires Neovim >= 0.8.0)
-
-If `.local/bin/base-config/shellhistoryfilter.py` is used,
-
-- Python
-
-If `.local/bin/base-config/connect-to-wireless-network` is used,
-
-- `wpa_supplicant`
-- NetworkManager
-
-### wayland-config
-
-- Iosevka Term SS09 font
-- `acpi`
-- wl-clipboard (xclip "equivalent")
-- Sway
-- Foot (installed with Sway if done via package manager)
-- `bemenu`
-- `brightnessctl` (if using laptop)
-- `pavucontrol`
-
 ## Install a config
 
 `.local/bin/base-config/init-any-config` and all `init-more` scripts are supposed to idempotent.

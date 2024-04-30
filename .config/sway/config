@@ -49,6 +49,8 @@ bindsym --locked XF86MonBrightnessUp exec /usr/bin/brightnessctl set 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 
+bindsym Print exec slurp | grim -g - ~/Pictures/"$(date --rfc-3339 ns | sed 's/ /_/g; s/:/-/g').png"
+
 bindsym $mod+Return exec foot
 bindsym $mod+Shift+t exec foot -e tmux attach || foot -e tmux
 bindsym $mod+d exec $menu
