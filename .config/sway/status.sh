@@ -30,8 +30,10 @@ while true; do
         status_string="Backlight: $BRIGHTNESS% | $status_string"
     fi
 
-    AUDIO_VOLUME=$(amixer get Master | awk -F'[][]' 'END{ print $2 }')
-    status_string="Audio: $AUDIO_VOLUME | $status_string"
+    if amixer get Master | grep -q '\[on\]'; then
+        AUDIO_VOLUME=$(amixer get Master | awk -F'[][]' 'END{ print $2 }')
+        status_string="Audio: $AUDIO_VOLUME | $status_string"
+    fi
 
     echo "$status_string"
 
