@@ -1,35 +1,39 @@
 # config
 
-`config` is a configuration management system for Linux users. Instructions for how to realize this system are provided below. `base-config` is the instance of `config` that contains files that are most likely to be useful in any Linux instance in the domain(s) a user works in&mdash;modify as desired.
+`config` is a configuration management pattern in Shell for Linux users. `base-config` is the instance of `config` that contains files that are most likely to be useful in any Linux instance in the domain(s) a user works in. This `base-config` and the `wayland-config` are customized to myself&mdash;modify to your needs.
 
-## TODO (`wayland-config`)
+## TODO
 
+### config
+- Refactor to Nix
+
+### `wayland-config`
 - GTK/QT universal theme
 
 ## Install a config
-
-`.local/bin/base-config/init-any-config` and all `init-more` scripts are supposed to idempotent.
 
 Assign `config_repo` to something like `base-config` or `wayland-config` then do
 
 ```shell
 cd
-git clone --depth 1 https://github.com/dl0461/"$config_repo".git
+git clone https://github.com/dl0461/"$config_repo".git
 ```
+
+Read `"$config_repo/.config/shell/$config_repo/dependencies"`.
 
 If `config_repo` is not `base-config`
 
 ```shell
-init-any-config "$config_repo"
+init-config "$config_repo"
 ```
 
 else
 
 ```shell
-. "$config_repo/.local/bin/$config_repo/"init-any-config "$config_repo"
+. "$config_repo/.local/bin/$config_repo/init-config" "$config_repo"
 ```
 
-Now verify all dependencies are installed then logout.
+now logout.
 
 ## Use a config
 
