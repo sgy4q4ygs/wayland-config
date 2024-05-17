@@ -9,11 +9,11 @@ while true; do
         status_string="Battery: $BATTERY_CAPACITY% | $status_string"
     fi
 
-    ETH_INTERFACE_NAME=$(ip link show | awk '/eth|enp/ {print $2}' | sed 's/://')
-    WIFI_INTERFACE_NAME=$(ip link show | awk '/wlan|wifi|wlp/ {print $2}' | sed 's/://')
+    ETH_INTERFACE_NAME=$(ip link show | awk '/[1-9]+: eth|enp|enx/ {print $2}' | sed 's/://')
+    WIFI_INTERFACE_NAME=$(ip link show | awk '/[1-9]+: wlan|wifi|wlp/ {print $2}' | sed 's/://')
 
     if ip addr show "$ETH_INTERFACE_NAME" > /dev/null 2>&1; then
-        ETH_IP_ADDR=$(ip addr show "$ETH_INTERFACE_NAME" | awk '/inet / {print $2}')
+        ETH_IP_ADDR=$(ip addr show "$ETH_INTERFACE_NAME" | awk '/inet / { ip = ip ? ip ", " $2 : $2 } END { print ip }')
         status_string="$ETH_INTERFACE_NAME: $ETH_IP_ADDR | $status_string"
     fi
 

@@ -1,4 +1,6 @@
 {
+    "window.titleBarStyle": "custom",
+
     "editor.tabCompletion": "on",
     "editor.minimap.enabled": false,
     "editor.cursorBlinking": "solid",
@@ -29,5 +31,4 @@
     "omnisharp.enableLspDriver": true,
     "omnisharp.enableDecompilationSupport": true,
     "omnisharp.disableMSBuildDiagnosticWarning": false
-
 }

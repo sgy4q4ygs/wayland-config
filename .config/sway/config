@@ -8,7 +8,7 @@ set $right l
 set $menu bemenu-run
 set $gnome-schema org.gnome.desktop.interface
 
-seat seat0 hide_cursor 500
+seat seat0 hide_cursor 2000
 
 input "type:keyboard" {
 	xkb_layout "hhkb"
