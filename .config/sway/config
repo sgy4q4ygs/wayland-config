@@ -18,9 +18,16 @@ input "type:touchpad" {
 }
 
 output * bg #000000 solid_color
-# if there are two monitors attached with display port of resolution 2560x1440 physically in portrait orientation
-output "DP-1" resolution 1440x2560 position 0,0 transform 270
-output "DP-2" resolution 1440x2560 position 1440,0 transform 270
+### working on two portrait monitors
+#output "eDP-1" disable
+##
+#output "DP-1" resolution 1440x2560 position 0,0 transform 270
+#output "HDMI-A-1" resolution 1440x2560 position 1440,0 transform 270
+#output "DP-2" resolution 1440x2560 position 1440,0 transform 270
+##
+### using a TV or something...
+#output "HDMI-A-1" mode 3840x2160@60Hz
+###
 
 # this binding doesn't work - could use another
 #bindsym XF86PowerOff exec systemctl suspend
