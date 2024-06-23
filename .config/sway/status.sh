@@ -2,10 +2,10 @@
 
 while true; do
 
-    status_string=$(date +'%D,%l:%M:%S %p')
+    status_string=$([ $(date +'%l') -lt 10 ] && date +'%D,%l:%M:%S %p' || date +'%D, %I:%M:%S %p')
 
     if acpi -b > /dev/null 2>&1; then
-        BATTERY_CAPACITY=$(acpi -b | awk '{print $4}' | tr -d ',%')
+        BATTERY_CAPACITY=$(acpi -b | awk '/(Disc|C)harging/{print $4}' | tr -d ',%')
         status_string="Battery: $BATTERY_CAPACITY% | $status_string"
     fi
 

@@ -26,7 +26,7 @@ output * bg #000000 solid_color
 #output "DP-2" resolution 1440x2560 position 1440,0 transform 270
 ##
 ### using a TV or something...
-#output "HDMI-A-1" mode 3840x2160@60Hz
+output "HDMI-A-1" mode 3840x2160@60Hz
 ###
 
 # this binding doesn't work - could use another
@@ -53,6 +53,7 @@ output * bg #000000 solid_color
 #
 bindsym --locked XF86MonBrightnessDown exec /usr/bin/brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec /usr/bin/brightnessctl set 5%+
+bindsym XF86AudioMicMute exec [ ! $(/usr/bin/brightnessctl g) -eq 0 ] && /usr/bin/brightnessctl set 0% || /usr/bin/brightnessctl set 50%
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioMute exec amixer set Master toggle
