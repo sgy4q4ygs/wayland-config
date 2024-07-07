@@ -1,12 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 while true; do
 
     status_string=$([ $(date +'%l') -lt 10 ] && date +'%D,%l:%M:%S %p' || date +'%D, %I:%M:%S %p')
 
     if acpi -b > /dev/null 2>&1; then
-        BATTERY_CAPACITY=$(acpi -b | awk '/(Disc|C)harging/{print $4}' | tr -d ',%')
-        status_string="Battery: $BATTERY_CAPACITY% | $status_string"
+        BATTERY=$(acpi -b | awk '{
+            if (match($0, /((Not C|Disc|C)harging|Full)/))
+                status = substr($0, RSTART, RLENGTH)
+            if (match($0, /, [0-9]+%/))
+                percentage = substr($0, RSTART, RLENGTH)
+            print status percentage
+        }')
+        status_string="$BATTERY | $status_string"
     fi
 
     ETH_INTERFACE_NAME=$(ip link show | awk '/[1-9]+: eth|enp|enx/ {print $2}' | sed 's/://')

@@ -10,7 +10,7 @@ if [ -f "$CFG/shell/sway-config/cmdpatterns" ]; then
 	add-zsh-hook zshexit shellhistoryfilter_hook
 fi
 
-if which sway && [ "$(tty)" = '/dev/tty1' ]; then
+if which sway &> /dev/null && [ "$(tty)" = '/dev/tty1' ]; then
 # screen casting
 # systemctl --user show-environment
 # should show: XDG_CURRENT_DESKTOP=sway

@@ -57,7 +57,8 @@ bar {
 #output DP-2 mode 2560x1440@60Hz
 
 # TV
-output HDMI-A-1 mode 3840x2160@60Hz
+workspace 2 output HDMI-A-1
+output HDMI-A-1 mode 3840x2160@60Hz scale 3
 bar {
     output HDMI-A-1
     position bottom
