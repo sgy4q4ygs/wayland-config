@@ -17,17 +17,58 @@ input "type:touchpad" {
     tap enabled
 }
 
+# disable touch screen for lenovo yoga
+# ...
+
 output * bg #000000 solid_color
-### working on two portrait monitors
-#output "eDP-1" disable
-##
-#output "DP-1" resolution 1440x2560 position 0,0 transform 270
-#output "HDMI-A-1" resolution 1440x2560 position 1440,0 transform 270
-#output "DP-2" resolution 1440x2560 position 1440,0 transform 270
-##
-### using a TV or something...
-output "HDMI-A-1" mode 3840x2160@60Hz
-###
+
+# two portrait monitors
+#output eDP-1 disable
+#output DP-1 mode 1440x2560@60Hz pos 0,0 transform 270
+#output DP-2 mode 1440x2560@60Hz pos 1440,0 transform 270
+
+# one landscape monitor above a laptop screen (multi-stream transport annoyance included), using laptop keyboard
+workspace 1 output DP-3 DP-4 DP-5 DP-6 DP-7 eDP-1
+#workspace 1 output DP-1
+workspace 2 output eDP-1
+output DP-3 pos 0 0
+output DP-4 pos 0 0
+output DP-5 pos 0 0
+output DP-6 pos 0 0
+output DP-7 pos 0 0
+#output DP-1 pos 0 0
+output eDP-1 pos 0 1440
+bar {
+    output eDP-1
+    position bottom
+    status_command $XDG_CONFIG_HOME/sway/status.sh
+    colors {
+        active_workspace #555555 #000000 #888888
+        inactive_workspace #555555 #000000 #888888
+        focused_workspace #555555 #222222 #cccccc
+        statusline #888888
+        background #000000
+    }
+}
+
+# one landscape monitor and one portrait monitor
+#output eDP-1 disable
+#output DP-1 mode 1440x2560@60Hz pos 0,0 transform 270
+#output DP-2 mode 2560x1440@60Hz
+
+# TV
+output HDMI-A-1 mode 3840x2160@60Hz
+bar {
+    output HDMI-A-1
+    position bottom
+    colors {
+        active_workspace #555555 #000000 #888888
+        inactive_workspace #555555 #000000 #888888
+        focused_workspace #555555 #222222 #cccccc
+        statusline #888888
+        background #000000
+    }
+}
 
 # this binding doesn't work - could use another
 #bindsym XF86PowerOff exec systemctl suspend
@@ -58,18 +99,18 @@ bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioMute exec amixer set Master toggle
 
-bindsym Print exec slurp | grim -g - ~/Pictures/"$(date --rfc-3339 ns | sed 's/ /_/g; s/:/-/g').png"
-
-bindsym $mod+Return exec foot
-bindsym $mod+Shift+t exec foot -e tmux attach || foot -e tmux
-bindsym $mod+d exec $menu
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 # on some systems/keyboards/... etc neither of these works
 #bindsym $mod+Shift+c reload
 #bindsym $mod+Shift+c exec sway reload
 bindsym $mod+Shift+q kill
 
+bindsym $mod+Return exec foot
+bindsym $mod+Shift+Return exec foot -e tmux attach || foot -e tmux
+bindsym $mod+d exec $menu
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
 bindsym $mod+Shift+a exec pavucontrol
+bindsym Print exec slurp | grim -g - ~/Pictures/"$(date --rfc-3339 ns | sed 's/ /_/g; s/:/-/g').png"
 
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -96,17 +137,6 @@ client.focused #222222 #222222 #cccccc #222222 #222222
 client.unfocused #000000 #000000 #888888 #000000 #000000
 client.focused_inactive #000000 #000000 #888888 #000000 #000000
 client.focused_tab_title #000000 #000000 #888888 #000000 #000000
-bar {
-    position bottom
-    status_command $XDG_CONFIG_HOME/sway/status.sh
-    colors {
-        active_workspace #555555 #000000 #888888
-        inactive_workspace #555555 #000000 #888888
-        focused_workspace #555555 #222222 #cccccc
-        statusline #888888
-        background #000000
-    }
-}
 
 exec_always {
 	gsettings set $gnome-schema color-scheme 'prefer-dark'
