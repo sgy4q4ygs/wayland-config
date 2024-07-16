@@ -1,0 +1,74 @@
+set vertical-center true
+set zoom-center true
+set zoom-step 7
+set show-recent 0
+set scroll-page-aware true
+set link-zoom false
+set advance-pages-per-row true
+# fc-query /usr/share/fonts/iosevka-term-ss09-light.ttf
+# set font 'Iosevka Term SS09 24'
+# interestingly, scaling the font down when scaling GTK stuff up
+# with GDK_DPI_SCALE=1.2 breaks scaling iosevka font down
+# but scaling Xft.dpi up by 1.2 does not break scaling iosevka font down
+set font 'Iosevka Term SS09 12'
+set highlight-transparency 0.75
+set page-padding 6
+set statusbar-home-tilde true
+set guioptions ''
+set search-hadjust false
+set page-cache-size 30
+set selection-clipboard clipboard
+set window-title-basename true
+
+map , zoom in
+map . zoom out
+map d scroll half-down
+map u scroll half-up
+map f scroll full-down
+map b scroll full-up
+map <C-d> toggle_page_mode
+map <C-f> follow
+
+set recolor true
+set recolor-keephue true
+
+set default-fg "#73401A"
+set default-bg "#140C04"
+
+set recolor-darkcolor  "#73401A"
+set recolor-lightcolor "#000000"
+set index-fg "#73401A"
+set index-bg "#000000"
+set inputbar-fg "#73401A"
+set inputbar-bg "#000000"
+set completion-fg "#73401A"
+set completion-bg "#000000"
+
+set statusbar-fg "#995523"
+set statusbar-bg "#40240E"
+set completion-group-fg "#995523"
+set completion-group-bg "#40240E"
+set completion-highlight-fg "#995523"
+set completion-highlight-bg "#40240E"
+set index-active-fg "#995523"
+set index-active-bg "#40240E"
+set notification-fg "#995523"
+set notification-bg "#40240E"
+set highlight-fg "#995523"
+set highlight-color "#40240E"
+set highlight-active-color "#40240E"
+
+set notification-error-fg "#000000"
+set notification-error-bg "#73401A"
+set notification-warning-fg "#000000"
+set notification-warning-bg "#73401A"
+
+# green page
+#set recolor-darkcolor  "#009000"
+#set recolor-lightcolor "#002000"
+# green accent
+#set default-fg "#995523"
+#set default-bg "#001000"
+# green highlighter
+#set highlight-color "#00A000"
+#set highlight-active-color "#00A000"

@@ -5,7 +5,6 @@ set $down j
 set $up k
 set $right l
 
-set $menu bemenu-run
 set $gnome-schema org.gnome.desktop.interface
 
 seat seat0 hide_cursor 2000
@@ -107,7 +106,7 @@ bindsym $mod+Shift+q kill
 
 bindsym $mod+Return exec foot
 bindsym $mod+Shift+Return exec foot -e tmux attach || foot -e tmux
-bindsym $mod+d exec $menu
+bindsym $mod+d exec bemenu-run
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 bindsym $mod+Shift+a exec pavucontrol

@@ -15,6 +15,7 @@
 
 !/.config/sway
 !/.config/foot
+!/.config/zathura
 
 !/.config/Code
 /.config/Code/*

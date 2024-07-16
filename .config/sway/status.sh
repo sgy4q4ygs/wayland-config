@@ -6,7 +6,7 @@ while true; do
 
     if acpi -b > /dev/null 2>&1; then
         BATTERY=$(acpi -b | awk '{
-            if (match($0, /((Not C|Disc|C)harging|Full)/))
+            if (match($0, /((Not c|Disc|C)harging|Full)/))
                 status = substr($0, RSTART, RLENGTH)
             if (match($0, /, [0-9]+%/))
                 percentage = substr($0, RSTART, RLENGTH)
