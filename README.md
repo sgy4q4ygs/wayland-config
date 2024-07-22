@@ -2,14 +2,6 @@
 
 `config` is a configuration management pattern in Shell for Linux users. `base-config` is the instance of `config` that contains files that are most likely to be useful in any Linux instance in the domain(s) a user works in. This `base-config` and the `wayland-config` are customized to myself&mdash;modify to your needs.
 
-## TODO
-
-### config
-- Refactor to Nix
-
-### `wayland-config`
-- GTK/QT universal theme
-
 ## Install a config
 
 Assign `config_repo` to something like `base-config` or `wayland-config` then do

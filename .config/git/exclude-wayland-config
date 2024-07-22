@@ -1,6 +1,7 @@
 /*
 
 !/.xkb
+!/.gtkrc-2.0
 
 !/.config
 /.config/*
@@ -16,6 +17,12 @@
 !/.config/sway
 !/.config/foot
 !/.config/zathura
+!/.config/gtk-3.0/
+/.config/gtk-3.0/*
+!/.config/gtk-3.0/settings.ini
+!/.config/gtk-4.0/
+/.config/gtk-4.0/*
+!/.config/gtk-4.0/settings.ini
 
 !/.config/Code
 /.config/Code/*
