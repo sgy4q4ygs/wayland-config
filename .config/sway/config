@@ -5,12 +5,10 @@ set $down j
 set $up k
 set $right l
 
-set $gnome-schema org.gnome.desktop.interface
-
 seat seat0 hide_cursor 2000
 
 input "type:keyboard" {
-	xkb_layout "hhkb"
+    xkb_layout "hhkb"
 }
 input "type:touchpad" {
     tap enabled
@@ -27,9 +25,9 @@ output * bg #000000 solid_color
 #output DP-2 mode 1440x2560@60Hz pos 1440,0 transform 270
 
 # one landscape monitor above a laptop screen (multi-stream transport annoyance included), using laptop keyboard
-workspace 1 output DP-3 DP-4 DP-5 DP-6 DP-7 eDP-1
-#workspace 1 output DP-1
-workspace 2 output eDP-1
+workspace 1 output eDP-1
+workspace 2 output DP-3 DP-4 DP-5 DP-6 DP-7 eDP-1
+#workspace 2 output DP-1
 output DP-3 pos 0 0
 output DP-4 pos 0 0
 output DP-5 pos 0 0
@@ -37,6 +35,21 @@ output DP-6 pos 0 0
 output DP-7 pos 0 0
 #output DP-1 pos 0 0
 output eDP-1 pos 0 1440
+bar {
+    output DP-3
+    output DP-4
+    output DP-5
+    output DP-6
+    output DP-7
+    position bottom
+    colors {
+        active_workspace #555555 #000000 #888888
+        inactive_workspace #555555 #000000 #888888
+        focused_workspace #555555 #222222 #cccccc
+        statusline #888888
+        background #000000
+    }
+}
 bar {
     output eDP-1
     position bottom
@@ -104,8 +117,8 @@ bindsym XF86AudioMute exec amixer set Master toggle
 #bindsym $mod+Shift+c exec sway reload
 bindsym $mod+Shift+q kill
 
-bindsym $mod+Return exec foot
-bindsym $mod+Shift+Return exec foot -e tmux attach || foot -e tmux
+bindsym $mod+Return exec foot -e $XDG_CONFIG_HOME/tmux/tmux.sh
+bindsym $mod+Shift+Return exec foot
 bindsym $mod+d exec bemenu-run
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
@@ -138,22 +151,15 @@ client.unfocused #000000 #000000 #888888 #000000 #000000
 client.focused_inactive #000000 #000000 #888888 #000000 #000000
 client.focused_tab_title #000000 #000000 #888888 #000000 #000000
 
-exec_always {
-	gsettings set $gnome-schema color-scheme 'prefer-dark'
-    gsettings set $gnome-schema gtk-theme 'Yaru-dark'
-	gsettings set $gnome-schema icon-theme 'Yaru-dark'
-	gsettings set $gnome-schema cursor-theme 'Yaru-dark'
-}
-
 mode "resize" {
-    bindsym $left resize shrink width 80px
-    bindsym $down resize grow height 80px
-    bindsym $up resize shrink height 80px
-    bindsym $right resize grow width 80px
-    bindsym Left resize shrink width 40px
-    bindsym Down resize grow height 40px
-    bindsym Up resize shrink height 40px
-    bindsym Right resize grow width 40px
+    bindsym $left resize shrink width 100px
+    bindsym $down resize grow height 100px
+    bindsym $up resize shrink height 100px
+    bindsym $right resize grow width 100px
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -179,5 +185,23 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
+
+# works in preference to gtk config files when gnome is installed
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
+    gsettings set $gnome-schema icon-theme 'Adwaita-dark'
+    gsettings set $gnome-schema cursor-theme 'Adwaita-dark' # for the case that an application can't find the setting, delete (or change) settings in /usr/share/icons/default/index.theme
+    gsettings set $gnome-schema cursor-size 0
+    gsettings set $gnome-schema enable-animations false
+    gsettings set $gnome-schema gtk-key-theme 'Vi'
+    gsettings set $gnome-schema toolbar-icons-size 'small'
+    gsettings set org.gnome.settings-daemon.plugins.cursor active false
+    gsettings set org.gnome.settings-daemon.plugins.media-keys active false
+    gsettings set org.gnome.desktop.sound event-sounds false
+    gsettings set org.gnome.desktop.interface cursor-blink false
+    gsettings set org.gnome.desktop.interface button-layout 'default'
+    gsettings set org.gnome.desktop.interface toolbar-style 'icons'
+}
 
 include /etc/sway/config.d/*

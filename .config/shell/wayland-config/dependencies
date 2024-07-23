@@ -70,6 +70,10 @@ if ! which grim > /dev/null 2>&1; then
     install_package grim
 fi
 
+if ! which swayimg > /dev/null 2>&1; then
+    install_package swayimg
+fi
+
 if ! which obs > /dev/null 2>&1; then
     if echo "$APT_DISTROS" | tr ' ' '\n' | grep -q "$DISTRO_NAME"; then
         echo "Adding repo for obs-studio..."

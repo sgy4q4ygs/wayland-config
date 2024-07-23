@@ -1,51 +1,51 @@
-# config
+This is a pattern of configuration management inspired by Git and the contemporary Linux home directory "authority". `[user]/base-config` maximizes the collection of domain-unspecific files present in one's home directory, while other pattern elements are more specific, such as `[user]/xorg-config` or `[user]/wayland-config`, and very specific, such as `[user]/nvim-config`, where the parent directory can be viewed as an artifact, but not necessarily an impurity. Note that there are nicer ways to do this kind of configuration management. The experiment ever wanders away from any "ideal"&mdash;it may even exhibit ugliness.
 
-`config` is a configuration management pattern in Shell for Linux users. `base-config` is the instance of `config` that contains files that are most likely to be useful in any Linux instance in the domain(s) a user works in. This `base-config` and the `wayland-config` are customized to myself&mdash;modify to your needs.
+## Install an Element
 
-## Install a config
-
-Assign `config_repo` to something like `base-config` or `wayland-config` then do
+Assign element to something like `base-config` or `wayland-config`, and assign `user` to something like `sgy4q4ygs`. Then, do
 
 ```shell
 cd
-git clone https://github.com/dl0461/"$config_repo".git
+git clone "https://github.com/$user/$element.git"
 ```
 
-Read `"$config_repo/.config/shell/$config_repo/dependencies"`.
-
-If `config_repo` is not `base-config`
+If `element` is not `base-config`
 
 ```shell
-init-config "$config_repo"
+init-config "$element"
 ```
 
 else
 
 ```shell
-. "$config_repo/.local/bin/$config_repo/init-config" "$config_repo"
+. "$element/.local/bin/$element/init-config" "$element"
 ```
 
 now logout.
 
-## Use a config
+## Use an Element
 
-Replace `git [commands]` with `git-"$config_repo" [commands]` to use a config repo.
+Replace `git [commands]` with `git-"$element" [commands]` to use a config repo.
 
-## Create a config
+## Create an Element
 
-The name of a config is of the form `*-config`.
+The name of a config is of the form `.+-config` where `.+` is a sequence of characters universally acceptable in the universe where the name exists.
 
 ### Shell Configuration
 
 ```shell
-mkdir ~/.config/shell/"$config_repo"
+mkdir ~/.config/shell/"$element"
 ```
 
 This directory can have these files:
 
-#### `init-more`
+#### `dependencies`
 
-See `.config/shell/base-config/init-more` for an example `init-more`. This kind of script does tasks that should be done before a `zprofile` is sourced.
+This script defines, downloads, and installs dependencies of a config. It is executed by `init`.
+
+#### `init`
+
+This kind of script does tasks that should be done before a `zprofile` is sourced. It can be setup to execute `dependencies` only once or every time `init` is executed.
 
 #### `cmdpatterns`
 
@@ -55,34 +55,22 @@ This file contains newline delimited Python `Lib/re` compatible regular expressi
 
 This file can have `ssh-add` statements in it.
 
-If `cmdpatterns` is used, this file should have this block in it:
-
-```shell
-if [ -f "$CFG/shell/$config_repo/cmdpatterns" ]; then
-    shellhistoryfilter_hook() {
-        shellhistoryfilter.py "$CFG/shell/$config_repo/cmdpatterns"\
-            &> "$XDG_STATE_HOME/zsh-shellhistoryfilter-hook-log"
-    }
-    add-zsh-hook zshexit shellhistoryfilter_hook
-fi
-```
-
 #### `zshrc.sh`
 
 This file contains any tasks that should be executed in `.zshrc`.
 
-### Unique Scripts and Binaries
+### Special Programs
 
 ```shell
-mkdir ~/.local/bin/"$config_repo"
+mkdir ~/.local/bin/"$element"
 ```
 
-This directory contains any scripts specfic to `$config_repo`. It will have at least one script:
+This directory contains any programs specfic to `$element`. It will have at least one script:
 
 ```shell
-cat << EOL > ~/.local/bin/"$config_repo/git-$config_repo"
+cat << EOL > ~/.local/bin/"$element/git-$element"
 #!/usr/bin/env sh
-git --git-dir="$HOME/$config_repo" "$@"
+git --git-dir="$HOME/$element" "$@"
 EOL
 ```
 
@@ -91,7 +79,7 @@ EOL
 Create an exclude template:
 
 ```shell
-cat << EOL > ~/.config/git/exclude-"$config_repo"
+cat << EOL > ~/.config/git/exclude-"$element"
 /*
 
 !/.config
@@ -101,25 +89,25 @@ cat << EOL > ~/.config/git/exclude-"$config_repo"
 /.config/git/*
 !/.config/git/config
 !/.config/git/hooks
-!/.config/git/exclude-"$config_repo"
+!/.config/git/exclude-"$element"
 
 !/.config/shell
 /.config/shell/*
-!/.config/shell/"$config_repo"
+!/.config/shell/"$element"
 
 !/.local
 /.local/*
 
 !/.local/bin
 /.local/bin/*
-!/.local/bin/"$config_repo"
+!/.local/bin/"$element"
 
 !/README.md
 EOL
 ```
 
-After an `exclude-"$config_repo"` is edited,
+After an `exclude-"$element"` is edited,
 
 ```shell
-init-any-config "$config_repo"
+init-config "$element"
 ```

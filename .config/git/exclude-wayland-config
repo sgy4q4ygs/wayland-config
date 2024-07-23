@@ -5,6 +5,7 @@
 
 !/.config
 /.config/*
+!/.config/mimeapps.list
 
 !/.config/git
 /.config/git/*
